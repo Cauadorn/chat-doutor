@@ -2,7 +2,7 @@
 
 App do paciente e app do médico do Chat Doutor funcionando e ligados, para testar o fluxo antes do desenvolvimento.
 
-**Testar:** https://cauadorn.github.io/chat-doutor-prototipo/
+**Testar:** https://cauadorn.github.io/chat-doutor/
 
 ## Como testar
 1. No paciente: "Comece aqui" (cadastro) ou "Entrar".
