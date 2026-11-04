@@ -301,6 +301,82 @@ h2.t.c { text-align: center; }
   .fone { width: 100%; max-width: 420px; }
   .aparelho { width: 100%; }
 }
+/* ===== v3 (04/11/2026): visual tecnológico pedido pelo cliente. Claro = padrão (vídeo 2), Escuro = modo noturno (vídeo 1).
+   Fundo em CSS (gradiente + pontos), sem vídeo: leve e sem risco de travar o app. ===== */
+.fone {
+  --glass: rgba(255,255,255,.74); --glass-b: rgba(255,255,255,.95); --glass-sh: 0 8px 28px rgba(6,59,78,.10);
+  --chip-b: #CFE3DF; --hl-b: #2BC9A0; --hl-sh: 0 10px 30px rgba(28,132,105,.18); --tab: rgba(255,255,255,.82); --kick: #0C7574;
+  background-color: #DDF1EB;
+  background-image:
+    radial-gradient(rgba(12,117,116,.11) 1px, transparent 1.4px),
+    radial-gradient(120% 60% at 50% -10%, #FFFFFF 0%, rgba(255,255,255,0) 60%),
+    radial-gradient(70% 45% at 100% 30%, rgba(43,201,160,.20) 0%, rgba(43,201,160,0) 70%),
+    radial-gradient(80% 50% at 0% 85%, rgba(14,140,139,.16) 0%, rgba(14,140,139,0) 70%),
+    linear-gradient(180deg, #EEF8F5 0%, #DDF1EB 55%, #D3ECE5 100%);
+  background-size: 22px 22px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+}
+.fone.escuro {
+  --glass: rgba(255,255,255,.07); --glass-b: rgba(255,255,255,.14); --glass-sh: 0 8px 28px rgba(0,0,0,.35);
+  --chip-b: rgba(255,255,255,.16); --hl-sh: 0 0 0 1px rgba(43,201,160,.35), 0 0 34px rgba(43,201,160,.28); --tab: rgba(6,26,32,.86); --kick: #7FD9C1;
+  --white: #0F2A32; --g50: transparent; --aqua50: rgba(255,255,255,.08); --aqua: rgba(255,255,255,.07);
+  background-color: #06212A;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 18%, rgba(255,255,255,.55), transparent),
+    radial-gradient(1.2px 1.2px at 78% 9%, rgba(255,255,255,.45), transparent),
+    radial-gradient(1.6px 1.6px at 88% 46%, rgba(127,217,193,.55), transparent),
+    radial-gradient(1.2px 1.2px at 6% 62%, rgba(255,255,255,.35), transparent),
+    radial-gradient(1.4px 1.4px at 40% 92%, rgba(255,255,255,.35), transparent),
+    radial-gradient(1.2px 1.2px at 64% 74%, rgba(127,217,193,.45), transparent),
+    radial-gradient(1px 1px at 28% 38%, rgba(255,255,255,.35), transparent),
+    radial-gradient(90% 45% at 50% 0%, rgba(43,201,160,.20) 0%, rgba(43,201,160,0) 65%),
+    radial-gradient(60% 40% at 100% 70%, rgba(14,140,139,.18) 0%, rgba(14,140,139,0) 70%),
+    linear-gradient(180deg, #0A3440 0%, #06212A 45%, #04161C 100%);
+  background-size: 100% 100%;
+}
+.fone .sb:not(.esc), .fone .rodape { background: transparent; }
+.fone .tela[style*="var(--g50)"], .fone .tela > div[style*="background:var(--g50)"] { background: transparent !important; }
+.fone .cab:not(.esc) { background: var(--tab); border-bottom: 1px solid var(--chip-b); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+/* cabeçalho da IA: "SAÚDE COM IA" + pílula de vidro (símbolo, online agora, selo IA + MÉDICO) */
+.topo-ia { flex: none; padding: 2px 16px 8px; display: flex; flex-direction: column; gap: 8px; }
+.topo-ia .kick { text-align: center; font: 700 12px/16px var(--f-display); letter-spacing: .32em; padding-left: .32em; color: var(--kick); }
+.pill-ia { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 8px; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-b); box-shadow: var(--glass-sh); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.pill-ia .simb { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #fff; flex: none; }
+.fone.escuro .pill-ia .simb { background: rgba(255,255,255,.10); }
+.pill-ia .tt { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pill-ia .tt b { font: 700 15px/20px var(--f-display); white-space: nowrap; }
+.pill-ia .tt span { font: 400 13px/18px var(--f-body); color: var(--g700); display: flex; align-items: center; gap: 6px; }
+.pill-ia .tt span i { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: block; box-shadow: 0 0 0 3px rgba(43,201,160,.18); }
+.pill-ia .selo-ia { font: 600 12px/16px var(--f-body); letter-spacing: .06em; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--chip-b); color: var(--kick); white-space: nowrap; margin-right: 4px; }
+.pill-ia .nova { margin: 0; background: transparent; border-color: var(--chip-b); color: var(--kick); box-shadow: none; }
+/* vidro nas superfícies */
+.fone .card:not(.sel,.ting,.lem,.suc,.esc), .fone .mini, .fone .card-p, .fone .op, .fone .soc, .fone .semana button:not(.on), .fone .nova, .fone .chip:not(.on), .fone .digit {
+  background: var(--glass); border-color: var(--glass-b); box-shadow: var(--glass-sh); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.fone .card { border-radius: 18px; }
+.fone .chip:not(.on) { border-color: var(--chip-b); }
+.fone .lista-m button { background: var(--glass); }
+.fone .bal { background: var(--glass); border: 1px solid var(--glass-b); box-shadow: var(--glass-sh); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.fone .msg.pac .bal { background: #0C7574; color: #fff; border: 0; box-shadow: 0 8px 20px rgba(12,117,116,.25); }
+.fone .msg.nota .bal { background: #FFF6D6; border: 1px dashed #C9A227; }
+.fone .av.ia { background: #fff; border-radius: 50%; }
+.fone.escuro .av.ia { background: rgba(255,255,255,.10); }
+/* card interativo dentro do chat: borda verde e brilho (o que o cliente gostou) */
+.fone .recuo .card, .fone .card.dest { border: 1.5px solid var(--hl-b) !important; box-shadow: var(--hl-sh); border-radius: 22px; }
+.card .kick-c { margin: 10px 0 0; display: flex; gap: 6px; align-items: center; font: 600 12px/16px var(--f-body); letter-spacing: .08em; color: var(--kick); }
+/* seleção = verde com texto grafite; ação primária com brilho */
+.fone .chip.on, .fone .semana button.on { background: var(--green); border-color: var(--green); color: #0B1A1F; box-shadow: 0 6px 18px rgba(43,201,160,.35); }
+.fone .chip.on svg, .fone .semana button.on b { color: #0B1A1F; }
+.fone .op.on { background: var(--glass); border: 2px solid var(--green); box-shadow: 0 0 0 3px rgba(43,201,160,.18), var(--glass-sh); }
+.fone .bt.pri:not(:disabled) { box-shadow: 0 8px 22px rgba(43,201,160,.35); }
+/* barra de mensagem e abas de vidro */
+.fone .comp { background: transparent; border-top: 0; padding: 6px 12px 8px; }
+.fone .comp .lin { background: var(--glass); border: 1px solid var(--glass-b); box-shadow: var(--glass-sh); border-radius: 999px; padding: 4px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.fone .comp input { background: transparent; }
+.fone .comp input:focus { outline: 0; }
+.fone .comp .lin:focus-within { border-color: var(--green); }
+.fone .abas { background: var(--tab); border-top: 1px solid var(--chip-b); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.fone .abas button.on { color: var(--kick); }
+.fone .abas button.on::before { background: var(--green); }
+.fone.escuro .sw:not(.on) { background: rgba(255,255,255,.18); }
 </style>
 </head>
 <body>
@@ -608,7 +684,7 @@ function telaConsultas() {
 // ---------- telas do PACIENTE ----------
 const sb = escuro => `<div class="sb ${escuro ? 'esc' : ''}"><span>9:41</span><span class="ind"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:10px"></i><span class="bat"><b></b></span></span></div>`;
 const abasP = () => `<nav class="abas" aria-label="Menu do paciente">${[['inicio', 'casa', 'Início'], ['consultas', 'cal', 'Consultas'], ['saude', 'saude', 'Saúde'], ['mais', 'menu', 'Mais']].map(([k, i, l]) => `<button class="${S.p.aba === k ? 'on' : ''}" data-a="p-aba" data-v="${k}">${ic(i)}${l}</button>`).join('')}</nav>`;
-const cabIA = () => `<div class="cab" style="padding-left:20px"><span class="av ia">${SIM(20)}</span><div class="tt"><b>Chat Doutor</b><span>Assistente de saúde com IA</span></div>${S.p.chat.length ? `<button class="nova" data-a="p-nova-conversa">${ic('caneta', 's')}Nova conversa</button>` : ''}</div>`;
+const cabIA = () => `<div class="topo-ia"><div class="kick">SAÚDE COM IA</div><div class="pill-ia"><span class="simb">${SIM(22)}</span><div class="tt"><b>Chat Doutor</b><span><i></i>online agora</span></div>${S.p.chat.length ? `<button class="nova" data-a="p-nova-conversa">${ic('caneta', 's')}Nova conversa</button>` : '<span class="selo-ia">IA + MÉDICO</span>'}</div></div>`;
 const faixaAtd = () => { const c = S.c; if (!c || !['fila', 'atendimento', 'pausado'].includes(c.status)) return ''; const t = c.status === 'fila' ? 'Procurando um médico para você' : c.status === 'pausado' ? 'Atendimento pausado · volte até ' + c.ate : 'Atendimento em andamento com ' + MEDICO.nome; return `<button class="faixa" data-a="p-voltar-atd">${ic('msg', 's')}<span>${t}</span><b>Voltar</b></button>`; };
 const cabMed = (sub, status = 'Online', cor = 'var(--green)') => `<div class="cab esc"><button class="ib" data-a="p-inicio" aria-label="Voltar ao início">${ic('back')}</button><span class="av md">${MEDICO.ini}</span><div class="tt"><b>${MEDICO.nome}</b><span>${sub || MEDICO.esp + ' · ' + MEDICO.crm}</span></div><span class="selo" style="background:rgba(255,255,255,.12);color:#fff;gap:6px"><i style="width:8px;height:8px;border-radius:4px;background:${cor};display:block"></i>${status}</span></div>`;
 const composer = (ph, disc, extra = '') => `<div class="comp">${extra}<form class="lin" data-f="${ph.lado}"><button type="button" class="ib" aria-label="Anexar" data-a="${ph.lado}-anexo">${ic('clip')}</button><input id="in-${ph.lado}" autocomplete="off" placeholder="${ph.t}" aria-label="${ph.t}"><button class="env" aria-label="Enviar">${ic('up')}</button></form><div class="disc">${disc}</div></div>`;
@@ -627,7 +703,7 @@ function extrasIA(m, ultimo) {
   if (m.marcadores) h += `<div class="recuo"><div class="card" style="gap:0;padding:4px 14px">${[['Hemoglobina', 's', 'Na referência'], ['Vitamina D', 'l', 'Abaixo (19)'], ['Colesterol', 'l', 'Limítrofe']].map(([a, t, b]) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--g200);font-size:14px">${a}<span class="selo ${t}">${b}</span></div>`).join('')}</div></div>`;
   if (m.cta) h += `<div class="recuo"><div class="card" style="border:1.5px solid var(--teal7)"><b>Falar com um médico agora</b><span class="sub">Atendimento por chat a partir de R$ 69,90</span><button class="bt pri" data-a="p-cta">Iniciar consulta ${ic('seta', 's')}</button></div></div>`;
   if (m.escala && ultimo) h += `<div class="recuo"><div class="card" style="align-items:center"><b style="font:600 22px var(--f-display);color:var(--teal7)" id="dor-v">${S.p.dor ?? 5} de 10</b><input id="dor" type="range" min="0" max="10" value="${S.p.dor ?? 5}" style="width:100%;accent-color:#0C7574" aria-label="Nível de dor de 0 a 10"><div style="display:flex;justify-content:space-between;width:100%" class="lg"><span>0 · Sem dor</span><span>10 · Muita dor</span></div><button class="bt pri" data-a="p-dor">Confirmar</button></div></div>`;
-  if (m.resumo) { const r = S.p.resp; h += `<div class="recuo"><div class="card kv" style="padding:4px 14px">${[['Atendimento', S.p.tipo], ['Para', r.quem || 'Para mim'], ['Paciente', r.dados || '—'], ['Doença', r.doencas || '—'], ['Remédio', r.remedios || r.renovar || '—']].map(([a, b]) => `<div><span>${a}</span><b>${esc(b)}</b></div>`).join('')}</div>${ultimo ? `<button class="bt pri" data-a="p-escolher">Escolher atendimento ${ic('seta', 's')}</button>` : ''}</div>`; }
+  if (m.resumo) { const r = S.p.resp; h += `<div class="recuo"><div class="card kv" style="padding:4px 14px"><p class="kick-c">${ic('doc', 'xs')}RESUMO PARA O MÉDICO</p>${[['Atendimento', S.p.tipo], ['Para', r.quem || 'Para mim'], ['Paciente', r.dados || '—'], ['Doença', r.doencas || '—'], ['Remédio', r.remedios || r.renovar || '—']].map(([a, b]) => `<div><span>${a}</span><b>${esc(b)}</b></div>`).join('')}</div>${ultimo ? `<button class="bt pri" data-a="p-escolher">Escolher atendimento ${ic('seta', 's')}</button>` : ''}</div>`; }
   if (m.ops && ultimo && S.p.fluxo !== null) h += `<div class="recuo"><div class="chips">${m.ops.map(o => `<button class="chip" data-a="p-op" data-v="${esc(o)}">${esc(o)}</button>`).join('')}</div></div>`;
   if (m.ex && ultimo) h += `<div class="recuo"><div class="chips"><button class="chip ex" data-a="p-ex" data-v="${esc(m.ex)}">Responder com exemplo: “${esc(m.ex)}”</button></div></div>`;
   if (m.anexar && ultimo) h += `<div class="recuo"><div class="chips"><button class="chip" data-a="p-anexo">${ic('clip', 's')}Anexar hemograma.pdf (exemplo)</button></div></div>`;
@@ -767,14 +843,14 @@ function telaMedico() {
 function telaPainel() {
   const c = S.c; const st = !c ? 'O paciente ainda não pagou nenhuma consulta.' : { fila: 'Consulta paga. Está na fila do médico, esperando o aceite.', atendimento: 'Em atendimento. Paciente e médico conversam (a IA fica em pausa).', pausado: 'Atendimento pausado pelo paciente. Prazo para voltar: até ' + c.ate + '.', inativo: 'Encerrado por inatividade (3 horas sem retorno).', finalizado: 'Finalizado. Documentos enviados ao paciente.' }[c.status];
   const ativo = c && c.status === 'atendimento'; const pausado = c && c.status === 'pausado';
-  return `<h2>Como testar</h2><ol><li>No <b>paciente</b>: Comece aqui (cadastro) ou Entrar.</li><li>Toque num atalho, como <b>Renovar receita</b>, diga para quem é a consulta e responda à triagem.</li><li>Escolha chat ou vídeo e <b>pague</b>.</li><li>No <b>médico</b>: toque em <b>Já tenho um cadastro</b> e entre. Chega o aviso de nova consulta: <b>Ver e aceitar</b>.</li><li>Conversem. O médico prescreve, <b>finaliza</b> e assina.</li><li>O paciente recebe os documentos e <b>avalia</b>.</li><li>Em <b>Mais</b>, tudo abre: pagamento, preferências (modo escuro), suporte, relatório e privacidade.</li></ol><div class="estado"><b>Agora:</b> ${st}</div><div class="grupo"><span class="rotg">Simular o tempo (regras de inatividade)</span><button class="pb" data-a="t-30" ${ativo ? '' : 'disabled'}>Paciente sem responder há 30 min <span>›</span></button><button class="pb" data-a="t-60" ${ativo ? '' : 'disabled'}>Sem resposta há 1 hora <span>›</span></button><button class="pb" data-a="t-180" ${ativo || pausado ? '' : 'disabled'}>Passaram 3 horas sem retorno <span>›</span></button></div><div class="grupo"><span class="rotg">Recomeçar</span><button class="pb" data-a="t-reset">Reiniciar o teste <span>›</span></button></div><div class="regras"><span>A IA nunca responde no lugar do médico: ela só reengaja o paciente depois de 30 min de silêncio.</span><span>Prazo para concluir o atendimento: 3 horas desde que o médico assumiu, sempre com o mesmo médico.</span><span>Cadastro e primeiros passos do médico estão no Figma; aqui ele já começa liberado.</span></div>`;
+  return `<h2>Como testar</h2><ol><li>No <b>paciente</b>: Comece aqui (cadastro) ou Entrar.</li><li>Toque num atalho, como <b>Renovar receita</b>, diga para quem é a consulta e responda à triagem.</li><li>Escolha chat ou vídeo e <b>pague</b>.</li><li>No <b>médico</b>: toque em <b>Já tenho um cadastro</b> e entre. Chega o aviso de nova consulta: <b>Ver e aceitar</b>.</li><li>Conversem. O médico prescreve, <b>finaliza</b> e assina.</li><li>O paciente recebe os documentos e <b>avalia</b>.</li><li>Em <b>Mais</b>, tudo abre: pagamento, preferências (modo escuro), suporte, relatório e privacidade.</li></ol><div class="estado"><b>Agora:</b> ${st}</div><div class="grupo"><span class="rotg">Simular o tempo (regras de inatividade)</span><button class="pb" data-a="t-30" ${ativo ? '' : 'disabled'}>Paciente sem responder há 30 min <span>›</span></button><button class="pb" data-a="t-60" ${ativo ? '' : 'disabled'}>Sem resposta há 1 hora <span>›</span></button><button class="pb" data-a="t-180" ${ativo || pausado ? '' : 'disabled'}>Passaram 3 horas sem retorno <span>›</span></button></div><div class="grupo"><span class="rotg">Visual do app</span><button class="pb" data-a="p-tema" data-v="claro">Claro (padrão) <span>›</span></button><button class="pb" data-a="p-tema" data-v="escuro">Escuro (modo noturno) <span>›</span></button></div><div class="grupo"><span class="rotg">Recomeçar</span><button class="pb" data-a="t-reset">Reiniciar o teste <span>›</span></button></div><div class="regras"><span>A IA nunca responde no lugar do médico: ela só reengaja o paciente depois de 30 min de silêncio.</span><span>Prazo para concluir o atendimento: 3 horas desde que o médico assumiu, sempre com o mesmo médico.</span><span>Cadastro e primeiros passos do médico estão no Figma; aqui ele já começa liberado.</span></div>`;
 }
 
 // ---------- render e eventos ----------
 function render() {
   const ap = document.activeElement && document.activeElement.id; const val = ap && document.getElementById(ap) ? document.getElementById(ap).value : null;
   fp.innerHTML = telaPaciente(); fm.innerHTML = telaMedico(); painel.innerHTML = telaPainel();
-  fp.classList.toggle('escuro', S.p.tema === 'escuro' || (S.p.tema === 'sistema' && matchMedia('(prefers-color-scheme: dark)').matches)); fp.classList.toggle('grande', S.p.letra === 'grande');
+  fp.classList.toggle('escuro', S.p.tema === 'escuro' || (S.p.tema === 'sistema' && matchMedia('(prefers-color-scheme: dark)').matches)); fp.classList.toggle('grande', S.p.letra === 'grande'); fm.classList.toggle('escuro', fp.classList.contains('escuro'));
   if (ap && document.getElementById(ap)) { const el = document.getElementById(ap); if (val != null && 'value' in el && el.tagName !== 'BUTTON') el.value = val; el.focus(); try { if (val != null && el.setSelectionRange) el.setSelectionRange(val.length, val.length); } catch (e) {} }
 }
 const ordem = () => (S.ord = (S.ord || 0) + 1);
