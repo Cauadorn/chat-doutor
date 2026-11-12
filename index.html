@@ -428,6 +428,40 @@ h2.t.c { text-align: center; }
 .fone.escuro .comp .lin { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.10); box-shadow: none; }
 .fone.escuro .abas { background: var(--tab); border-top-color: rgba(255,255,255,.08); }
 .fone.escuro .abas button.on { color: #2BC9A0; }
+/* ===== Médico · aba Mais (12/11/2026, guia págs. 58–66: conta, configurações e Clínica digital) ===== */
+.m-topo { flex: none; display: flex; align-items: center; gap: 12px; padding: 12px 12px 8px 20px; }
+.m-topo .tx { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.m-topo .tx b { font: 600 15px/20px var(--f-display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-topo .tx span { font-size: 12px; line-height: 16px; color: var(--g700); }
+.m-topo .av { border: 0; cursor: pointer; }
+.sino { position: relative; }
+.sino .cnt { position: absolute; top: 4px; right: 4px; background: var(--coral); color: #052620; font: 700 10px var(--f-body); min-width: 16px; height: 16px; border-radius: 8px; display: grid; place-items: center; padding: 0 4px; }
+.banner-cv { flex-direction: row !important; align-items: center; gap: 12px; text-align: left; cursor: pointer; font: inherit; color: inherit; width: 100%; }
+.icone-m { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; flex: none; background: rgba(2,14,19,.6); color: #2BC9A0; border: 1px solid rgba(43,201,160,.4); }
+.card .lista-m button { background: transparent; padding: 0 16px; }
+.card .lista-m button:last-child { border-bottom: 0; }
+.lista-m button .selo { flex: none; }
+.abas-t { flex: none; display: flex; border-bottom: 1px solid var(--g200); }
+.abas-t button { flex: 1; min-height: 48px; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; background: none; font: 600 14px var(--f-body); color: var(--g700); cursor: pointer; }
+.abas-t button.on { color: var(--green7); border-bottom-color: var(--green7); }
+.olho { position: relative; } .olho input { padding-right: 52px; }
+.olho > button { position: absolute; right: 3px; top: 3px; width: 44px; height: 44px; border: 0; background: none; color: var(--g700); display: grid; place-items: center; cursor: pointer; }
+.olho .ic-dir { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--g700); display: flex; pointer-events: none; }
+.olho .pre { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-weight: 600; color: var(--g700); pointer-events: none; }
+.chk-l { padding: 0 !important; gap: 0 !important; overflow: hidden; }
+.chk-l button { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 16px; border: 0; border-bottom: 1px solid var(--g200); background: none; font: 400 15px var(--f-body); color: var(--graphite); text-align: left; cursor: pointer; }
+.chk-l button:last-child { border-bottom: 0; }
+.chk-l .cx { width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid var(--g500); display: grid; place-items: center; flex: none; color: #052620; }
+.chk-l button.on .cx { background: #2BC9A0; border-color: #2BC9A0; }
+.faq-m { padding: 12px 16px; border-bottom: 1px solid var(--g200); display: flex; flex-direction: column; gap: 8px; } .faq-m:last-child { border-bottom: 0; }
+.faq-m .faq-q > b { font-size: 14px; } .faq-m .faq-q > svg { color: var(--green7); transform: none !important; }
+.dias7 { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; } .dias7 .chip { padding: 0; justify-content: center; min-width: 0; font-size: 12px; }
+.heroi.cv { align-items: center; padding: 6px 14px 22px; } .heroi.cv > div:first-child { align-self: stretch; }
+.cv-ic { width: 84px; height: 112px; border-radius: 18px; display: grid; place-items: center; background: rgba(2,14,19,.55); color: #2BC9A0; border: 1.5px solid rgba(43,201,160,.6); box-shadow: 0 0 26px rgba(43,201,160,.3); }
+.passo-ic { width: 32px; height: 32px; border-radius: 16px; display: grid; place-items: center; flex: none; background: var(--mint); color: var(--green7); }
+.fone.escuro select { color-scheme: dark; }
+.cp .bloq { min-height: 50px; border-radius: 8px; background: var(--g200); color: var(--g500); padding: 13px 14px; font: 400 16px/22px var(--f-body); }
+.toast { pointer-events: none; } /* o aviso não bloqueia o toque no que está embaixo */
 </style>
 </head>
 <body>
@@ -521,7 +555,15 @@ const MEDICO = { nome: 'Dr. Luiz Carlos', completo: 'Dr. Luiz Carlos Gonçalves'
 let S;
 const novo = () => ({
   p: { tela: 'boasvindas', passo: 1, aba: 'inicio', chat: [], atalhos: true, digitando: false, fluxo: null, fila: [], resp: {}, tipo: null, livre: 0, mod: 'chat', pag: 'pix', processando: false, estrelas: 4, tags: ['Atenciosa'], erroCpf: false, cepOk: false, slide: 1, toast: '', aguardando: null, deps: [{ nome: 'Maria Silva', rel: 'Esposa', idade: 39 }, { nome: 'Pedro Silva', rel: 'Filho', idade: 8 }], sub: null, addDep: false, tema: 'claro', letra: 'padrao', prefs: { lembrete: true, receita: true, docs: true, ofertas: false, bio: true, saudeApp: true, iaHist: true }, cartoes: [{ band: 'visa', fim: '4242', apelido: 'Cartão pessoal', nome: 'ANTONIO SILVA', val: '08/29', principal: true }, { band: 'master', fim: '5454', apelido: 'Cartão da empresa', nome: 'ANTONIO SILVA', val: '03/28', principal: false }], supMsgs: [], novoRel: 'Filho(a)', anterior: null, ss: null, saude: { score: 82, missao: false, pressao: null, conectado: false, pesos: [80.0, 79.6, 79.3, 79.0, 78.8, 78.6], cats: { passos: true, sono: true, bat: true, pressao: true, peso: true }, compart: { score: true, sono: true, coracao: true, exames: true, peso: true, pressao: false }, enviando: 0 } },
-  m: { tela: 'boasvindas', aba: 'fila', dia: 21, notif: false, disp: true, abrir: null, nota: false, folha: false, receita: '', resumo: null, toast: '', ganhosExtra: [], pacientes: [] },
+  m: { tela: 'boasvindas', aba: 'fila', dia: 21, notif: false, disp: true, abrir: null, nota: false, folha: false, receita: '', resumo: null, toast: '', ganhosExtra: [], pacientes: [],
+    // aba Mais (12/11/2026). Dados de exemplo, como no guia.
+    sub: null, dadosAba: 'loc', notifs: 1, mfaq: null, aBusca: '', relPer: 'set', sen: { 'ms-a': 'senhateste', 'ms-n1': '', 'ms-n2': '' }, olhos: {},
+    dados: { cep: '01000-000', end: 'Rua Exemplo', num: '123', comp: 'Sala 45', bairro: 'Centro', ref: 'Próximo ao metrô', cidade: 'São Paulo', uf: 'SP', nome: 'Luiz Carlos Gonçalves', nasc: '14/05/1981', tel: '(11) 9 9999-9999', mail: 'dr.luiz@exemplo.com' },
+    crms: [{ n: '23322', uf: 'RS', p: true, fixo: true }],
+    fin: { banco: '000 - Banco Exemplo S.A.', tipo: 'Conta corrente', ag: '0000', agdv: '', cc: '00000000', ccdv: '0' },
+    areas: ['Médico generalista', 'Endocrinologia e Metabologia'],
+    mprefs: { fila: true, marcada: true, lembrete: true, resgate: true, bio: false },
+    cli: { ativa: false, passo: null, edit: false, valor: '120,00', mods: { chat: true, video: true }, dias: { Seg: 1, Ter: 1, Qua: 1, Qui: 1, Sex: 1, Sáb: 0, Dom: 0 }, faixas: [['08:00', '12:00'], ['14:00', '18:00']], dur: 30, pausada: false } },
   c: null, trans: 0, t: 0
 });
 S = novo();
@@ -826,7 +868,7 @@ function telaPaciente() {
 }
 
 // ---------- telas do MÉDICO ----------
-const abasM = () => { const abertos = S.c && ['atendimento', 'pausado'].includes(S.c.status) ? 1 : 0; return `<nav class="abas" aria-label="Menu do médico">${[['fila', 'lista', 'Fila'], ['atendimento', 'msg', 'Atendimento'], ['pacientes', 'users', 'Pacientes'], ['ganhos', 'carteira', 'Ganhos']].map(([k, i, l]) => `<button class="${S.m.aba === k ? 'on' : ''}" data-a="m-aba" data-v="${k}">${ic(i)}${l}${k === 'atendimento' && abertos ? `<span class="cnt">${abertos}</span>` : ''}</button>`).join('')}</nav>`; };
+const abasM = () => { const abertos = S.c && ['atendimento', 'pausado'].includes(S.c.status) ? 1 : 0; return `<nav class="abas" aria-label="Menu do médico">${[['fila', 'lista', 'Fila'], ['atendimento', 'msg', 'Atendimento'], ['pacientes', 'users', 'Pacientes'], ['ganhos', 'carteira', 'Ganhos'], ['mais', 'menu', 'Mais']].map(([k, i, l]) => `<button class="${S.m.aba === k ? 'on' : ''}" data-a="m-aba" data-v="${k}">${ic(i)}${l}${k === 'atendimento' && abertos ? `<span class="cnt">${abertos}</span>` : ''}</button>`).join('')}</nav>`; };
 const SEED = [
   { id: 'joao', ini: 'JA', n: 'João Alves, 52 anos', q: '“Tontura ao levantar e cansaço há 3 dias”', min: 3, prio: true, tags: [['e', 'Prioridade'], ['i', 'Vídeo'], ['n', 'Ozivy 1 mg'], ['l', 'Receita vence em 4 dias']], res: ['Tontura postural, sem desmaio', 'Comendo pouco desde o aumento da dose', 'Hipertenso, usa losartana 50 mg'], alerta: 'IA sinalizou: checar pressão arterial e hidratação antes de manter a dose.' },
   { id: 'carla', ini: 'CM', n: 'Carla Menezes, 29 anos', q: '“Esqueci a aplicação de domingo, o que faço?”', min: 4, tags: [['i', 'Chat'], ['n', 'Ozivy 0,25 mg']] }
@@ -842,17 +884,131 @@ function telaMedicoEntrada() {
 const AGENDA = { 20: [], 21: [['10:00', 'Carla Menezes', 'Vídeo', 'Emagrecimento'], ['14:30', 'Rafael Costa', 'Chat', 'Clínico geral']], 22: [['09:00', 'Bruno Castro', 'Vídeo', 'Renovação de receitas']], 23: [], 24: [['16:00', 'Marina Lima', 'Chat', 'Retorno']], 25: [], 26: [] };
 function telaAgenda() {
   const m = S.m; const dias = [['Seg', 20], ['Ter', 21], ['Qua', 22], ['Qui', 23], ['Sex', 24], ['Sáb', 25], ['Dom', 26]]; const lst = AGENDA[m.dia] || [];
-  return sb() + `<div class="tela"><div class="cab"><button class="ib" data-a="m-aba" data-v="fila" aria-label="Voltar">${ic('back')}</button><div class="tt"><b>Agenda</b><span>Toque no dia para ver as consultas</span></div></div><div class="rolagem"><div class="semana">${dias.map(([d, n]) => `<button class="${m.dia === n ? 'on' : ''}" data-a="m-dia" data-v="${n}">${d}<b>${n}</b>${(AGENDA[n] || []).length ? '<i></i>' : ''}</button>`).join('')}</div><span class="lg" style="font-weight:600;letter-spacing:.06em">${lst.length ? lst.length + (lst.length > 1 ? ' CONSULTAS' : ' CONSULTA') + ' NESTE DIA' : 'NENHUMA CONSULTA NESTE DIA'}</span>${lst.map(([h, n, md, tp]) => `<div class="card" style="flex-direction:row;align-items:center;gap:12px"><b style="font:600 17px var(--f-display);width:52px">${h}</b><div style="flex:1;display:flex;flex-direction:column"><b style="font-size:14px">${esc(n)}</b><span class="lg">${esc(tp)}</span></div><span class="selo i">${md}</span></div>`).join('') || `<div class="aviso">${ic('cal')}<div><b>Dia livre</b>Os pacientes marcam nos horários que você abrir.</div></div>`}</div>${abasM()}</div>`;
+  return sb() + `<div class="tela"><div class="cab"><button class="ib" data-a="m-agenda-voltar" aria-label="Voltar">${ic('back')}</button><div class="tt"><b>Agenda</b><span>Toque no dia para ver as consultas</span></div></div><div class="rolagem"><div class="semana">${dias.map(([d, n]) => `<button class="${m.dia === n ? 'on' : ''}" data-a="m-dia" data-v="${n}">${d}<b>${n}</b>${(AGENDA[n] || []).length ? '<i></i>' : ''}</button>`).join('')}</div><span class="lg" style="font-weight:600;letter-spacing:.06em">${lst.length ? lst.length + (lst.length > 1 ? ' CONSULTAS' : ' CONSULTA') + ' NESTE DIA' : 'NENHUMA CONSULTA NESTE DIA'}</span>${lst.map(([h, n, md, tp]) => `<div class="card" style="flex-direction:row;align-items:center;gap:12px"><b style="font:600 17px var(--f-display);width:52px">${h}</b><div style="flex:1;display:flex;flex-direction:column"><b style="font-size:14px">${esc(n)}</b><span class="lg">${esc(tp)}</span></div><span class="selo i">${md}</span></div>`).join('') || `<div class="aviso">${ic('cal')}<div><b>Dia livre</b>Os pacientes marcam nos horários que você abrir.</div></div>`}<button class="bt sec" data-a="m-cli-agenda-hor">${ic('relogio', 's')} Alterar dias e horários</button></div>${abasM()}</div>`;
 }
 function notifCard() {
   const m = S.m; if (!m.notif || !S.c || S.c.status !== 'fila' || ['boasvindas', 'login'].includes(m.tela)) return '';
   return `<div class="notif" role="alert"><span class="lg" style="display:flex;gap:6px;align-items:center;font-weight:600;color:var(--teal7)">${ic('sino', 'xs')}Você tem uma nova consulta · agora</span><div class="av-l"><span class="av md">${pi()}</span><div class="tx"><b>${esc(pn())}</b><span>${esc(S.c.tipo)} · por ${S.c.mod === 'chat' ? 'chat' : 'vídeo'}</span></div></div>${S.c.dep ? `<span class="selo n" style="align-self:flex-start">Dependente de Antônio Silva · ${esc(S.c.dep.toLowerCase())}</span>` : ''}<div class="duo"><button class="bt sec peq" data-a="m-notif-fechar">Agora não</button><button class="bt pri peq" data-a="m-notif-ver">Ver e aceitar</button></div></div>`;
+}
+// ---------- MÉDICO · aba Mais (12/11/2026) ----------
+// Guia do Eduardo, págs. 58–66 ("Complemento · App do Médico, menu Mais"): Meus dados (Localização), Clínica digital,
+// Alterar CRM, Alterar senha, Financeiro, Área de atuação e Suporte vieram desenhadas. PROPOSTA nossa (o guia não trouxe):
+// aba Dados pessoais, os 3 passos de configurar a Clínica digital e o painel dela, Preferências, Relatório e Política e termos.
+Object.assign(IP, {
+  estet: '<path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/>',
+  banco: '<path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/>',
+  busca: '<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>',
+  olho: '<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/>',
+  mais: '<path d="M5 12h14"/><path d="M12 5v14"/>', menos: '<path d="M5 12h14"/>',
+  compart: '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/>',
+  copiar: '<rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
+  moeda: '<circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/>',
+  crm: '<path d="M16 10h2"/><path d="M16 14h2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><circle cx="9" cy="11" r="2"/><rect x="2" y="5" width="20" height="14" rx="2"/>',
+  subir: '<path d="M12 3v12"/><path d="m17 8-5-5-5 5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>'
+});
+const UFS = 'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' ');
+const CEPUF = { 0: ['São Paulo', 'SP'], 1: ['São Paulo', 'SP'], 2: ['Rio de Janeiro', 'RJ'], 3: ['Belo Horizonte', 'MG'], 4: ['Salvador', 'BA'], 5: ['Recife', 'PE'], 6: ['Fortaleza', 'CE'], 7: ['Brasília', 'DF'], 8: ['Curitiba', 'PR'], 9: ['Porto Alegre', 'RS'] };
+const AREAS = ['Médico generalista', 'Alergia e Imunologia', 'Cardiologia', 'Cardiologia Pediátrica', 'CBD - Canabidiol e derivados', 'Clínica Médica', 'Dermatologia', 'Endocrinologia e Metabologia', 'Gastroenterologia', 'Geriatria', 'Ginecologia e obstetrícia', 'Hematologia e Hemoterapia', 'Infectologia', 'Mastologia', 'Medicina de Família e Comunidade'];
+const BANCOS = ['000 - Banco Exemplo S.A.', '001 - Banco do Brasil S.A.', '104 - Caixa Econômica Federal', '237 - Banco Bradesco S.A.', '341 - Itaú Unibanco S.A.', '033 - Banco Santander (Brasil) S.A.', '260 - Nu Pagamentos S.A.', '077 - Banco Inter S.A.', '756 - Sicoob', '748 - Sicredi'];
+const DIAS7 = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+const MFAQ = [
+  ['Minha conta e login', [
+    ['Meus dados médicos', 'CRM e áreas de atuação ficam em Mais › Alterar CRM e Mais › Área de atuação. O CRM já aprovado não pode ser editado: adicione o correto, marque como principal e remova o antigo.'],
+    ['Não consigo entrar na minha conta', 'Na tela de entrada, toque em Esqueci minha senha. Enviamos um código de 4 números para o seu e-mail ou celular.'],
+    ['Confirmação do número de telefone', 'Quando você muda o celular em Meus dados, enviamos um código por SMS. Se não chegar, confira o número e peça um novo código.'],
+    ['Alterar dados pessoais', 'Em Mais › Meus dados › Dados pessoais. O CPF não pode ser mudado; para corrigir, fale com o suporte.'],
+    ['Incluir foto no perfil', 'Em Mais, toque na sua foto no topo e escolha uma imagem da galeria ou tire uma foto na hora.'],
+    ['Excluir conta', 'Fale com o suporte pelo WhatsApp. Os prontuários dos seus atendimentos continuam guardados pelo prazo da lei, mesmo depois da exclusão.']]],
+  ['Atendimentos e ganhos', [
+    ['Quando recebo pelos atendimentos?', 'Cada atendimento é liberado para resgate 3 dias depois, na conta cadastrada em Mais › Financeiro.'],
+    ['Como funciona a clínica digital?', 'Você define o valor, os dias e os horários. Depois compartilha o seu código, link ou QR code, e os seus pacientes marcam direto na sua agenda.'],
+    ['Como pauso a fila?', 'Na aba Fila, toque na chave Disponível. Quem já estava esperando continua na fila.']]]
+];
+const MPOL = [
+  ['Quem pode atender', '<p>Só médicos com CRM ativo e cadastro aprovado. O CRM principal aparece nas receitas, nos atestados e no seu perfil.</p>'],
+  ['Telemedicina', '<p>Os atendimentos seguem a Resolução CFM nº 2.314/2022. Você decide se o caso pode ser resolvido a distância e pode indicar consulta presencial quando achar necessário.</p>'],
+  ['A assistente de IA', '<p>A assistente organiza a triagem e sugere o resumo da consulta. Ela não faz diagnóstico e não responde no seu lugar. Nada vai para o paciente antes da sua assinatura.</p>'],
+  ['Prontuário e sigilo', '<p>O prontuário fica guardado por no mínimo 20 anos (Lei 13.787/2018). Depois de finalizado não pode ser editado; só é possível acrescentar um informativo. As conversas são sigilosas, como em qualquer consulta.</p>'],
+  ['Seus dados (LGPD)', '<p>Usamos o seu cadastro, CRM, endereço e conta bancária para liberar o acesso, emitir documentos e pagar os atendimentos. Os dados de saúde dos pacientes só podem ser usados no atendimento.</p>'],
+  ['Pagamento', '<p>Cada atendimento é liberado para resgate 3 dias depois, na conta cadastrada em Financeiro. O CNPJ da conta precisa ser o mesmo do cadastro.</p>']
+];
+const MREL = {
+  set: [{ n: 'Marina L.', mod: 'Chat', d: 'Hoje, 11:26', dur: '9 min', v: 60, nota: 5 }, { n: 'Bruno C.', mod: 'Vídeo', d: 'Hoje, 10:10', dur: '18 min', v: 90, nota: 5 }, { n: 'Mônica D.', mod: 'Vídeo', d: '27/09', dur: '15 min', v: 90, nota: 4 }, { n: 'Karina O.', mod: 'Chat', d: '24/09', dur: '7 min', v: 60, nota: 5 }, { n: 'Jorge V.', mod: 'Vídeo', d: '22/09', dur: '20 min', v: 90, nota: 5 }],
+  ago: [{ n: 'Rafael C.', mod: 'Chat', d: '28/08', dur: '6 min', v: 60, nota: 5 }, { n: 'Ana P.', mod: 'Vídeo', d: '19/08', dur: '16 min', v: 90, nota: 4 }, { n: 'Pedro S.', mod: 'Chat', d: '12/08', dur: '8 min', v: 60, nota: 5 }, { n: 'Lúcia M.', mod: 'Vídeo', d: '03/08', dur: '22 min', v: 90, nota: 5 }]
+};
+function setMk(path, v) { const ks = path.split('.'); let o = S.m; for (const k of ks.slice(0, -1)) o = o[k]; o[ks[ks.length - 1]] = v; }
+const crmPrincipal = () => { const c = S.m.crms.find(x => x.p) || S.m.crms[0]; return `CRM-${c.uf} ${c.n}`; };
+const cabSubM = (tt, volta = '') => `<div class="cab"><button class="ib" data-a="m-sub" data-v="${volta}" aria-label="Voltar">${ic('back')}</button><h3>${tt}</h3></div>`;
+const telaSubM = (tt, corpo, volta = '', rod = '', topo = '') => sb() + `<div class="tela">${cabSubM(tt, volta)}${topo}<div class="rolagem">${corpo}</div>${rod}${abasM()}</div>`;
+const rodM = (rot, a, extra = '') => `<div class="rodape"><button class="bt pri" data-a="${a}" ${extra}>${rot}</button></div>`;
+const cpoM = (k, rot, ph = '', extra = '', tipo = 'text', attrs = '') => { const [o, c] = k.split('.'); return `<div class="cp" ${extra}><label for="mk-${o}-${c}">${rot}</label><input id="mk-${o}-${c}" type="${tipo}" data-mk="${k}" value="${esc(S.m[o][c])}" placeholder="${ph}" ${attrs}></div>`; };
+const selM = (k, rot, ops) => { const [o, c] = k.split('.'); return `<div class="cp"><label for="mk-${o}-${c}">${rot}</label><select id="mk-${o}-${c}" data-mk="${k}">${ops.map(x => `<option ${S.m[o][c] === x ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select></div>`; };
+const olho = (id, rot) => `<div class="cp"><label for="${id}">${rot}</label><div class="olho"><input id="${id}" type="${S.m.olhos[id] ? 'text' : 'password'}" value="${esc(S.m.sen[id])}" autocomplete="off" placeholder="Digite aqui"><button type="button" data-a="m-olho" data-v="${id}" aria-label="${S.m.olhos[id] ? 'Ocultar' : 'Mostrar'} a senha" aria-pressed="${!!S.m.olhos[id]}">${ic('olho', 's')}</button></div></div>`;
+const regrasM = a => ({ 'mq-8': a.length >= 8, 'mq-esp': /[^A-Za-z0-9]/.test(a), 'mq-mai': /[A-Z]/.test(a), 'mq-num': /\d/.test(a) });
+const senhaPode = () => { const s = S.m.sen, a = s['ms-n1'], b = s['ms-n2']; return !!s['ms-a'] && Object.values(regrasM(a)).every(Boolean) && !!b && a === b; };
+const MCONTA = {
+  dados: () => {
+    const m = S.m, d = m.dados, loc = m.dadosAba === 'loc';
+    const topo = `<div class="abas-t" role="tablist">${[['loc', 'Localização'], ['pes', 'Dados pessoais']].map(([k, l]) => `<button role="tab" aria-selected="${m.dadosAba === k}" class="${m.dadosAba === k ? 'on' : ''}" data-a="m-dados-aba" data-v="${k}">${l}</button>`).join('')}</div>`;
+    const corpo = loc
+      ? `<div class="cp"><label for="mk-dados-cep">CEP</label><div class="linha" style="align-items:center"><input id="mk-dados-cep" data-mk="dados.cep" inputmode="numeric" value="${esc(d.cep)}" placeholder="00000-000" style="flex:1"><button class="link" style="white-space:nowrap" data-a="m-cep-nao-sei">Não sei meu CEP</button></div></div>${cpoM('dados.end', 'Endereço', 'Rua, avenida')}<div class="linha">${cpoM('dados.num', 'Número', '', 'style="flex:1"', 'text', 'inputmode="numeric"')}${cpoM('dados.comp', 'Complemento', 'Sala, andar', 'style="flex:1"')}</div>${cpoM('dados.bairro', 'Bairro')}${cpoM('dados.ref', 'Ponto de referência', 'Opcional')}<div class="linha"><div class="cp" style="flex:2"><label for="md-cid">Cidade</label><input id="md-cid" value="${esc(d.cidade)}" disabled placeholder="Pelo CEP"></div><div class="cp" style="flex:1"><label for="md-uf">Estado</label><input id="md-uf" value="${esc(d.uf)}" disabled placeholder="UF"></div></div><span class="lg">Cidade e estado vêm do&nbsp;CEP.</span>`
+      : `${cpoM('dados.nome', 'Nome completo')}<div class="cp"><label for="md-cpf">CPF</label><input id="md-cpf" value="987.654.321-00" disabled></div>${cpoM('dados.nasc', 'Data de nascimento', 'DD/MM/AAAA', '', 'text', 'inputmode="numeric"')}${cpoM('dados.tel', 'Celular', '(00) 0 0000-0000', '', 'tel')}${cpoM('dados.mail', 'E-mail', '', '', 'email')}<span class="lg">O CPF não pode ser mudado. Se estiver errado, fale com o&nbsp;suporte.</span>`;
+    return telaSubM('Seus dados', corpo, '', rodM('Confirmar', 'm-dados-ok'), topo);
+  },
+  crm: () => {
+    const m = S.m;
+    return telaSubM('Alterar CRM', `<div class="aviso l">${ic('alerta')}<div>Seu cadastro já foi aprovado e os CRMs cadastrados não podem ser editados. Para corrigir, adicione o CRM correto, marque-o como principal, salve e remova o&nbsp;antigo.</div></div>${rotG('Cadastro regional de médico')}${m.crms.map((c, i) => `<div class="card"><div class="linha"><div class="cp" style="flex:2"><label for="crm-n${i}">CRM</label><input id="crm-n${i}" data-mk="crms.${i}.n" inputmode="numeric" value="${esc(c.n)}" placeholder="Novo CRM" ${c.fixo ? 'disabled' : ''}></div><div class="cp" style="flex:1"><label for="crm-uf${i}">UF</label>${c.fixo ? `<input id="crm-uf${i}" value="${c.uf}" disabled>` : `<select id="crm-uf${i}" data-mk="crms.${i}.uf"><option value="">UF</option>${UFS.map(u => `<option ${c.uf === u ? 'selected' : ''}>${u}</option>`).join('')}</select>`}</div></div><div style="display:flex;align-items:center;gap:10px"><b style="font-size:14px">Principal</b><button class="sw ${c.p ? 'on' : ''}" role="switch" aria-checked="${c.p}" aria-label="CRM principal" data-a="m-crm-principal" data-v="${i}"></button><span style="flex:1"></span><button class="link" style="color:var(--red)" data-a="m-crm-remover" data-v="${i}">Remover</button></div></div>`).join('')}<button class="link" style="align-self:center;display:flex;gap:6px;align-items:center" data-a="m-crm-add">${ic('mais', 'xs')}Adicionar outro</button>`, '', rodM('Salvar', 'm-crm-salvar'));
+  },
+  senha: () => { const s = S.m.sen, ok = regrasM(s['ms-n1']), dif = !!s['ms-n2'] && s['ms-n1'] !== s['ms-n2']; return telaSubM('Alterar senha', `<p class="sub">Para trocar a senha, informe a senha atual, a nova senha e repita para&nbsp;confirmar.</p>${olho('ms-a', 'Senha atual')}${olho('ms-n1', 'Nova senha')}<div class="card" style="gap:8px"><b style="font-size:14px">Sua senha deve conter:</b>${[['mq-8', 'No mínimo 8 caracteres'], ['mq-esp', 'Um caractere especial (!@#$%&*)'], ['mq-mai', 'Uma letra maiúscula'], ['mq-num', 'Um número (123...)']].map(([k, x]) => `<span class="regra ${ok[k] ? 'ok' : ''}" id="${k}">${ic(ok[k] ? 'ok' : 'erro', 'xs')}${x}</span>`).join('')}</div>${olho('ms-n2', 'Repita a nova senha')}<span class="lg" id="ms-aj" style="color:var(--red)" ${dif ? '' : 'hidden'}>As duas senhas não são iguais.</span>`, '', `<div class="rodape"><button class="bt pri" id="bt-msen" data-a="m-senha-ok" ${senhaPode() ? '' : 'disabled'}>Definir nova senha</button></div>`); },
+  fin: () => telaSubM('Financeiro', `<div class="aviso">${ic('escudo')}<div>Certifique-se de que o CNPJ da conta bancária seja igual ao CNPJ cadastrado na&nbsp;plataforma.</div></div><div class="cp"><span style="font:500 14px/20px var(--f-body)">Razão social</span><div class="bloq" id="mf-rs" aria-disabled="true">Luiz C. Gonçalves Serviços Médicos LTDA&nbsp;(exemplo)</div></div><div class="cp"><label for="mf-cnpj">CNPJ</label><input id="mf-cnpj" value="00.000.000/0001-00" disabled></div>${selM('fin.banco', 'Banco', BANCOS)}${selM('fin.tipo', 'Tipo de conta', ['Conta corrente', 'Conta poupança', 'Conta de pagamento'])}<div class="linha">${cpoM('fin.ag', 'Agência', '0000', 'style="flex:2"', 'text', 'inputmode="numeric" maxlength="4"')}${cpoM('fin.agdv', 'DV', '', 'style="flex:1"', 'text', 'maxlength="1" style="padding:0 6px;text-align:center"')}${cpoM('fin.cc', 'Conta', '00000000', 'style="flex:3"', 'text', 'inputmode="numeric" maxlength="12"')}${cpoM('fin.ccdv', 'DV', '', 'style="flex:1"', 'text', 'maxlength="1" style="padding:0 6px;text-align:center"')}</div><span class="lg">O dígito da agência (DV) não é obrigatório. Deixe em branco se a sua conta não&nbsp;tiver.</span><span class="lg">Os resgates de Ganhos caem nesta&nbsp;conta.</span>`, '', rodM('Confirmar', 'm-fin-ok')),
+  area: () => {
+    const m = S.m; const q = (m.aBusca || '').toLowerCase(); const lst = AREAS.filter(a => !q || a.toLowerCase().includes(q));
+    return telaSubM('Áreas de atuação', `<div class="cp"><div class="olho"><input id="ma-busca" aria-label="Buscar especialidade" autocomplete="off" placeholder="Buscar" value="${esc(m.aBusca || '')}"><span class="ic-dir">${ic('busca', 's')}</span></div></div><span class="lg">${m.areas.length} ${m.areas.length === 1 ? 'área selecionada' : 'áreas selecionadas'} · definem quais atendimentos chegam na sua&nbsp;fila</span>${lst.length ? `<div class="card chk-l">${lst.map(a => { const on = m.areas.includes(a); return `<button role="checkbox" aria-checked="${on}" class="${on ? 'on' : ''}" data-a="m-area" data-v="${esc(a)}"><span class="cx">${on ? ic('check', 'xs') : ''}</span><span>${esc(a)}</span></button>`; }).join('')}</div>` : `<div class="aviso">${ic('info')}<div><b>Nada encontrado</b>Tente outro nome de especialidade.</div></div>`}`);
+  },
+  pref: () => {
+    const prefM = (k, t, s) => `<div class="pref"><div><b>${t}</b>${s ? `<span>${s}</span>` : ''}</div><button class="sw ${S.m.mprefs[k] ? 'on' : ''}" data-a="m-pref" data-v="${k}" role="switch" aria-checked="${!!S.m.mprefs[k]}" aria-label="${t}"></button></div>`;
+    return telaSubM('Preferências', `${rotG('Notificações')}<div class="card" style="padding-top:2px;padding-bottom:2px">${prefM('fila', 'Novo paciente na fila', 'Aviso na hora, com&nbsp;som')}${prefM('marcada', 'Consulta marcada na clínica&nbsp;digital', 'Quando um paciente escolhe um&nbsp;horário')}${prefM('lembrete', 'Lembrete de consulta marcada', '15 minutos antes do&nbsp;horário')}${prefM('resgate', 'Resgate liberado', 'Quando um atendimento fica disponível em&nbsp;Ganhos')}</div>${rotG('Segurança')}<div class="card" style="padding-top:2px;padding-bottom:2px">${prefM('bio', 'Entrar com Face ID ou digital', '')}</div><div class="card" style="flex-direction:row;align-items:center"><b style="flex:1;font-size:15px">Idioma</b><span class="lg">Português (Brasil)</span></div>`);
+  },
+  suporte: () => {
+    const m = S.m;
+    return telaSubM('Ajuda', `<div class="card" style="align-items:center;text-align:center"><span class="icone-g" style="width:56px;height:56px;background:var(--aqua50);color:var(--teal7)">${ic('msg')}</span><b style="font:600 18px var(--f-display)">Precisando de ajuda?</b><span class="lg">Converse com nossa equipe de&nbsp;suporte.</span><button class="bt pri" data-a="m-whats">Conversar no WhatsApp</button></div>${MFAQ.map(([g, its], gi) => rotG(g) + `<div class="card" style="padding:0;overflow:hidden;gap:0">${its.map(([q, a], i) => { const k = gi + '.' + i; const ab = m.mfaq === k; return `<div class="faq-m"><button class="faq-q" data-a="m-faq" data-v="${k}" aria-expanded="${ab}"><b>${q}</b>${ic(ab ? 'menos' : 'mais', 's')}</button>${ab ? `<p>${a.replace(/ (\S+)$/, '&nbsp;$1')}</p>` : ''}</div>`; }).join('')}</div>`).join('')}`);
+  },
+  relatorio: () => {
+    const m = S.m; const per = m.relPer; const lst = MREL[per]; const chat = lst.filter(r => r.mod === 'Chat').length; const nota = (lst.reduce((a, r) => a + r.nota, 0) / lst.length).toFixed(1).replace('.', ','); const tot = lst.reduce((a, r) => a + r.v, 0);
+    return telaSubM('Relatório de atendimentos', `<div style="display:flex;gap:8px">${[['set', 'Setembro'], ['ago', 'Agosto']].map(([k, l]) => `<button class="chip ${per === k ? 'on' : ''}" style="flex:none" data-a="m-rel-per" data-v="${k}">${l}</button>`).join('')}</div><div class="grade2"><div class="mini">Atendimentos<b>${lst.length}</b></div><div class="mini">Chat · vídeo<b>${chat} · ${lst.length - chat}</b></div><div class="mini">Nota média<b>${nota} de 5</b></div><div class="mini">Total do mês<b>${brl(tot)}</b></div></div><div class="card ext" style="gap:0;padding:4px 14px">${lst.map(e => `<div><span style="width:34px;height:34px;border-radius:8px;background:var(--aqua50);display:grid;place-items:center;color:var(--teal7)">${ic(e.mod === 'Chat' ? 'msg' : 'video', 's')}</span><span class="tx"><b>${e.mod} · ${esc(e.n)}</b><span>${e.d} · ${e.dur}</span></span><span class="vl"><b>${brl(e.v)}</b><span class="lg">Nota ${e.nota}</span></span></div>`).join('')}</div>`, '', `<div class="rodape"><button class="bt sec" data-a="m-rel-pdf">${ic('baixar', 's')} Baixar relatório em PDF</button></div>`);
+  },
+  politica: () => telaSubM('Política e termos', `<span class="lg">Atualizados em 12 de novembro de 2026</span><div class="pol">${MPOL.map(([h, b]) => `<h4>${h}</h4>${b.replace(/ ([^ <]+)<\/p>/g, '&nbsp;$1</p>')}`).join('')}</div><button class="bt sec" data-a="m-termos-pdf">${ic('baixar', 's')} Baixar termos em PDF</button>`)
+};
+function telaClinica() {
+  const c = S.m.cli; const val = 'R$ ' + c.valor;
+  const passos = n => c.edit ? '' : `<div style="display:flex;flex-direction:column;gap:6px"><span class="lg rot">Passo ${n} de 3</span><div class="prog"><i style="width:${Math.round(n * 100 / 3)}%"></i></div></div>`;
+  const tela = (tt, corpo, rod) => sb() + `<div class="tela"><div class="cab"><button class="ib" data-a="m-cli" data-v="voltar" aria-label="Voltar">${ic('back')}</button><h3>${tt}</h3></div><div class="rolagem">${corpo}</div>${rod}${abasM()}</div>`;
+  if (c.passo === 'valor') return tela(c.edit ? 'Valor da consulta' : 'Clínica digital', `${passos(1)}<h2 class="t">Quanto você quer ganhar por consulta agendada?</h2><div class="cp"><label for="mc-valor">Valor por consulta</label><div class="olho"><span class="pre">R$</span><input id="mc-valor" inputmode="numeric" autocomplete="off" value="${esc(c.valor)}" style="padding-left:46px"></div></div><span class="lg">É o valor que você recebe por consulta marcada. Fica disponível em Ganhos 3 dias depois, como os outros&nbsp;atendimentos.</span>${rotG('Como você quer atender')}<div class="duo">${[['chat', 'msg', 'Chat'], ['video', 'video', 'Videochamada']].map(([k, i, l]) => `<button class="chip f ${c.mods[k] ? 'on' : ''}" role="checkbox" aria-checked="${!!c.mods[k]}" data-a="m-cli-mod" data-v="${k}">${ic(i, 's')}${l}</button>`).join('')}</div>`, rodM(c.edit ? 'Salvar' : 'Continuar', 'm-cli', 'data-v="valor-ok"'));
+  if (c.passo === 'horarios') return tela(c.edit ? 'Dias e horários' : 'Clínica digital', `${passos(2)}<h2 class="t">Quando você quer atender?</h2>${rotG('Dias da semana')}<div class="dias7">${DIAS7.map(d => `<button class="chip ${c.dias[d] ? 'on' : ''}" role="checkbox" aria-checked="${!!c.dias[d]}" data-a="m-cli-dia" data-v="${d}">${d}</button>`).join('')}</div>${rotG('Horários')}${c.faixas.map(([a, b], i) => `<div class="linha" style="align-items:flex-end"><div class="cp" style="flex:1"><label for="mf-${i}a">Das</label><input id="mf-${i}a" data-mf="${i}.0" inputmode="numeric" maxlength="5" placeholder="00:00" value="${a}"></div><div class="cp" style="flex:1"><label for="mf-${i}b">Até</label><input id="mf-${i}b" data-mf="${i}.1" inputmode="numeric" maxlength="5" placeholder="00:00" value="${b}"></div>${c.faixas.length > 1 ? `<button class="ib" style="height:50px;flex:none" data-a="m-cli-faixa-del" data-v="${i}" aria-label="Tirar este horário">${ic('x', 's')}</button>` : ''}</div>`).join('')}${c.faixas.length < 4 ? `<button class="link" style="align-self:flex-start;padding-left:0;display:flex;gap:6px;align-items:center" data-a="m-cli-faixa-add">${ic('mais', 'xs')}Adicionar outro horário</button>` : ''}${rotG('Duração de cada consulta')}<div class="duo">${[20, 30, 40].map(n => `<button class="chip f ${c.dur === n ? 'on' : ''}" data-a="m-cli-dur" data-v="${n}">${n} min</button>`).join('')}</div><span class="lg">Os pacientes só veem os horários livres. Para um dia de folga, desmarque o dia ou pause os&nbsp;agendamentos.</span>`, rodM(c.edit ? 'Salvar' : 'Continuar', 'm-cli', 'data-v="hor-ok"'));
+  if (c.passo === 'compartilhar') return tela(c.edit ? 'Compartilhar' : 'Clínica digital', `${passos(3)}<h2 class="t">Chame os seus pacientes</h2><p class="sub">Eles marcam direto na sua agenda, nos horários que você&nbsp;abriu.</p><div class="card" style="align-items:center;text-align:center"><div class="qr">${ic('qr')}</div><span class="lg">Mostre o QR code no&nbsp;consultório</span></div><div class="card kv" style="padding:4px 14px"><div style="align-items:center"><span>Código</span><b style="display:flex;gap:4px;align-items:center">DRLUIZ23<button class="ib" data-a="m-copiar" data-v="Código" aria-label="Copiar o código">${ic('copiar', 's')}</button></b></div><div style="align-items:center"><span>Link</span><b style="display:flex;gap:4px;align-items:center;min-width:0">chatdoutor.com.br/dr-luiz<button class="ib" data-a="m-copiar" data-v="Link" aria-label="Copiar o link">${ic('copiar', 's')}</button></b></div></div><button class="bt sec" data-a="m-compart-link">${ic('compart', 's')} Compartilhar link</button><button class="bt txt" data-a="m-importar">${ic('subir', 's')} Importar lista de pacientes</button>`, rodM(c.edit ? 'Pronto' : 'Ativar clínica digital', 'm-cli', `data-v="${c.edit ? 'pronto' : 'ativar'}"`));
+  if (c.ativa) {
+    const nomes = { 20: 'Seg', 21: 'Ter', 22: 'Qua', 23: 'Qui', 24: 'Sex', 25: 'Sáb', 26: 'Dom' };
+    const prox = Object.entries(AGENDA).flatMap(([d, l]) => l.map(x => [d, ...x])).slice(0, 3);
+    const sel = DIAS7.filter(d => c.dias[d]); const dias = sel.join('') === 'SegTerQuaQuiSex' ? 'Seg a Sex' : sel.length === 7 ? 'Todos os dias' : sel.join(', ');
+    const mods = c.mods.chat && c.mods.video ? 'Chat e vídeo' : c.mods.chat ? 'Chat' : 'Vídeo';
+    return sb() + `<div class="tela">${cabSubM('Clínica digital')}<div class="rolagem"><div class="card dest" style="flex-direction:row;align-items:center;gap:12px"><span style="flex:1;display:flex;flex-direction:column;gap:2px"><b style="font-size:15px">${c.pausada ? 'Agendamentos pausados' : 'Recebendo agendamentos'}</b><span class="lg">${c.pausada ? 'Ninguém novo marca. Quem já marcou continua na&nbsp;agenda.' : 'Seus pacientes marcam pelo código ou&nbsp;link'}</span></span><button class="sw ${c.pausada ? '' : 'on'}" role="switch" aria-checked="${!c.pausada}" aria-label="Recebendo agendamentos" data-a="m-cli-pausa"></button></div>${rotG('Como você atende')}<div class="card kv" style="padding:4px 14px"><div><span>Valor por consulta</span><b>${val}</b></div><div><span>Atende por</span><b>${mods}</b></div><div><span>Dias</span><b>${dias}</b></div><div><span>Horários</span><b>${c.faixas.map(([a, b]) => a + '–' + b).join('<br>')}</b></div><div><span>Duração</span><b>${c.dur} min</b></div></div><div class="duo"><button class="bt sec peq" data-a="m-cli" data-v="editar-valor">Alterar valor</button><button class="bt sec peq" data-a="m-cli" data-v="editar-hor">Alterar horários</button></div>${rotG('Próximas consultas marcadas')}${prox.map(([d, h, n, md, tp]) => `<div class="card" style="flex-direction:row;align-items:center;gap:12px"><span style="display:flex;flex-direction:column;align-items:center;width:40px;flex:none"><span class="lg">${nomes[d]}</span><b style="font:600 17px var(--f-display)">${d}</b></span><div style="flex:1;display:flex;flex-direction:column"><b style="font-size:14px">${esc(n)}</b><span class="lg">${h} · ${esc(tp)}</span></div><span class="selo i">${md}</span></div>`).join('')}<button class="bt txt" data-a="m-agenda">${ic('cal', 's')} Ver a agenda completa</button><button class="bt sec" data-a="m-cli" data-v="compart">${ic('compart', 's')} Compartilhar código e link</button></div>${abasM()}</div>`;
+  }
+  return sb(true) + `<div class="tela"><div class="heroi cv"><div style="display:flex;align-items:center;gap:6px"><button class="ib" data-a="m-sub" data-v="" aria-label="Voltar" style="color:#fff">${ic('back')}</button><b style="font:600 17px var(--f-display)">Clínica digital</b></div><span class="cv-ic">${ic('estet', 'l')}</span></div><div class="rolagem" style="text-align:center;align-items:center"><span class="lg rot" style="color:var(--green7)">Agendamento de consulta</span><h2 class="t c" style="margin:0">Atenda pacientes com dia e hora&nbsp;marcada</h2><p class="sub c">Liberdade para escolher quando e como&nbsp;atender</p><div style="display:flex;gap:12px;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--green7)"><span style="display:flex;gap:4px;align-items:center">${ic('msg', 'xs')}Chat</span><span style="display:flex;gap:4px;align-items:center">${ic('video', 'xs')}Videochamada</span><span class="selo s">Novo</span></div><div class="card" style="text-align:left;width:100%;gap:12px"><b style="font-size:15px">Veja como atender</b>${[['moeda', 'Defina o <b>valor</b> que você quer ganhar por consulta&nbsp;agendada.'], ['cal', 'Escolha os <b>dias e horários</b> que deseja atender seus&nbsp;pacientes.'], ['compart', 'Compartilhe seu <b>código, link</b> ou <b>QR code</b>, ou importe uma&nbsp;lista.']].map(([i, t]) => `<div style="display:flex;gap:12px;align-items:flex-start"><span class="passo-ic">${ic(i, 's')}</span><span style="font-size:14px;line-height:20px">${t}</span></div>`).join('')}</div></div>${rodM('Quero experimentar', 'm-cli', 'data-v="comecar"')}${abasM()}</div>`;
+}
+function telaMaisM() {
+  const m = S.m;
+  if (m.sub === 'clinica') return telaClinica();
+  if (m.sub && MCONTA[m.sub]) return MCONTA[m.sub]();
+  const itens = [['user', 'Meus dados', 'dados'], ['estet', 'Clínica digital', 'clinica', true], ['crm', 'Alterar CRM', 'crm'], ['cadeado', 'Alterar senha', 'senha'], ['banco', 'Financeiro', 'fin'], ['saude', 'Área de atuação', 'area'], ['config', 'Preferências', 'pref'], ['ajuda', 'Suporte', 'suporte'], ['doc', 'Relatório de atendimentos', 'relatorio'], ['escudo', 'Política e termos', 'politica']];
+  const cv = m.cli.ativa ? (m.cli.pausada ? 'Agendamentos pausados' : 'Recebendo agendamentos') : 'Atenda seus pacientes com horário&nbsp;marcado';
+  return sb() + `<div class="tela"><div class="m-topo"><button class="av md g" data-a="m-foto" aria-label="Trocar a foto do perfil">${MEDICO.ini}</button><div class="tx"><b>${MEDICO.completo}</b><span>${MEDICO.esp} · ${crmPrincipal()}</span></div><button class="ib sino" data-a="m-sino" aria-label="Notificações${m.notifs ? ': ' + m.notifs + ' nova' : ''}">${ic('sino')}${m.notifs ? `<span class="cnt">${m.notifs}</span>` : ''}</button></div><div class="rolagem" style="padding-top:4px"><button class="card dest banner-cv" data-a="m-sub" data-v="clinica"><span style="flex:1;display:flex;flex-direction:column;gap:4px;align-items:flex-start"><span class="selo s">${m.cli.ativa ? 'Ativa' : 'Novo'}</span><b style="font:600 16px var(--f-display)">Clínica virtual</b><span class="lg">${cv}</span><span class="lg" style="display:flex;gap:10px;align-items:center;color:var(--green7);font-weight:600"><span style="display:flex;gap:4px;align-items:center">${ic('msg', 'xs')}Chat</span><span style="display:flex;gap:4px;align-items:center">${ic('video', 'xs')}Videochamada</span></span></span><span class="icone-m">${ic('estet')}</span></button><div class="card" style="padding:0;overflow:hidden;gap:0"><div class="lista-m">${itens.map(([i, l, s, novo]) => `<button data-a="m-sub" data-v="${s}">${ic(i)}<span>${l}</span>${novo && !m.cli.ativa ? '<span class="selo s">Novo</span>' : ''}${ic('next', 's')}</button>`).join('')}<button data-a="m-sair">${ic('sair')}<span style="color:var(--red)">Sair</span>${ic('next', 's')}</button></div></div></div>${abasM()}</div>`;
 }
 function telaMedico() {
   const m = S.m; let h = '';
   const tst = m.toast ? `<div class="toast" role="status">${esc(m.toast)}</div>` : '';
   if (m.tela === 'boasvindas' || m.tela === 'login') return telaMedicoEntrada() + tst;
   if (m.tela === 'agenda') return telaAgenda() + notifCard() + tst;
+  if (m.aba === 'mais') return telaMaisM() + notifCard() + tst;
   const aba = m.aba;
   if (aba === 'fila' && m.tela !== 'triagem') {
     const temNovo = S.c && S.c.status === 'fila' && m.disp;
@@ -885,7 +1041,7 @@ function telaMedico() {
   } else if (aba === 'ganhos') {
     const extra = m.ganhosExtra.reduce((a, b) => a + b.v, 0);
     const ext = [...m.ganhosExtra, { n: 'Chat · Marina L.', d: 'Hoje, 11:26', v: 60, lib: 'Libera 01/10' }, { n: 'Vídeo · Bruno C.', d: 'Hoje, 10:10', v: 90, lib: 'Libera 01/10' }, { n: 'Vídeo · Mônica D.', d: '27/09', v: 90, lib: 'Libera 30/09' }, { n: 'Chat · Karina O.', d: '24/09', v: 60, lib: null }, { n: 'Vídeo · Jorge V.', d: '22/09', v: 90, lib: null }];
-    h = sb() + `<div class="tela"><div class="cab" style="padding:0 20px"><h3>Ganhos</h3><span class="lg">Setembro de 2026</span></div><div class="rolagem"><div class="card" style="flex-direction:row"><div style="flex:1;display:flex;flex-direction:column"><span class="lg">Saldo total</span><b style="font:600 22px var(--f-display)">${brl(690 + extra)}</b></div><div style="flex:1;display:flex;flex-direction:column"><span class="lg">Disponível para resgate</span><b style="font:600 22px var(--f-display);color:var(--teal7)">R$ 360,00</b></div></div><span class="lg">Cada atendimento é liberado para resgate 3 dias depois.</span><div class="card"><b style="font-size:14px">Últimos 7 dias</b><div class="graf">${[[60, '22/9'], [0, '23/9'], [60, '24/9'], [0, '25/9'], [90, '26/9'], [90, '27/9'], [150 + extra, 'Hoje']].map(([v, d]) => `<div><span>${v || '–'}</span><i class="${d === 'Hoje' ? 'hj' : ''}" style="height:${Math.max(3, v * 0.32)}px"></i>${d}</div>`).join('')}</div></div><div class="card ext" style="gap:0;padding:4px 14px">${ext.map(e => `<div><span style="width:34px;height:34px;border-radius:8px;background:var(--aqua50);display:grid;place-items:center;color:var(--teal7)">${ic(e.n.startsWith('Chat') ? 'msg' : 'video', 's')}</span><span class="tx"><b>${esc(e.n)}</b><span>${e.d}</span></span><span class="vl"><b>+ ${brl(e.v)}</b><span class="selo ${e.lib ? 'l' : 's'}">${e.lib || 'Liberado'}</span></span></div>`).join('')}</div></div>${abasM()}</div>`;
+    h = sb() + `<div class="tela"><div class="cab" style="padding:0 20px"><h3>Ganhos</h3><span class="lg">Setembro de 2026</span></div><div class="rolagem"><div class="card" style="flex-direction:row"><div style="flex:1;display:flex;flex-direction:column"><span class="lg">Saldo total</span><b style="font:600 22px var(--f-display)">${brl(690 + extra)}</b></div><div style="flex:1;display:flex;flex-direction:column"><span class="lg">Disponível para resgate</span><b style="font:600 22px var(--f-display);color:var(--teal7)">R$ 360,00</b></div></div><span class="lg">Cada atendimento é liberado para resgate 3 dias depois.</span><button class="card" data-a="m-ir-fin" style="flex-direction:row;align-items:center;gap:12px;text-align:left;cursor:pointer;font:inherit;color:inherit;width:100%"><span style="color:var(--teal7);display:flex">${ic('banco')}</span><span style="flex:1;display:flex;flex-direction:column;gap:2px;min-width:0"><b style="font-size:14px">Os resgates caem em</b><span class="lg">${esc(m.fin.banco.split(' - ')[1] || m.fin.banco)} · ag. ${esc(m.fin.ag)} · conta ••••${esc(String(m.fin.cc).slice(-4))}</span></span><span class="link">Alterar</span></button><div class="card"><b style="font-size:14px">Últimos 7 dias</b><div class="graf">${[[60, '22/9'], [0, '23/9'], [60, '24/9'], [0, '25/9'], [90, '26/9'], [90, '27/9'], [150 + extra, 'Hoje']].map(([v, d]) => `<div><span>${v || '–'}</span><i class="${d === 'Hoje' ? 'hj' : ''}" style="height:${Math.max(3, v * 0.32)}px"></i>${d}</div>`).join('')}</div></div><div class="card ext" style="gap:0;padding:4px 14px">${ext.map(e => `<div><span style="width:34px;height:34px;border-radius:8px;background:var(--aqua50);display:grid;place-items:center;color:var(--teal7)">${ic(e.n.startsWith('Chat') ? 'msg' : 'video', 's')}</span><span class="tx"><b>${esc(e.n)}</b><span>${e.d}</span></span><span class="vl"><b>+ ${brl(e.v)}</b><span class="selo ${e.lib ? 'l' : 's'}">${e.lib || 'Liberado'}</span></span></div>`).join('')}</div></div>${abasM()}</div>`;
   }
   return h + notifCard() + (m.toast ? `<div class="toast" role="status">${esc(m.toast)}</div>` : '');
 }
@@ -894,7 +1050,7 @@ function telaMedico() {
 function telaPainel() {
   const c = S.c; const st = !c ? 'O paciente ainda não pagou nenhuma consulta.' : { fila: 'Consulta paga. Está na fila do médico, esperando o aceite.', atendimento: 'Em atendimento. Paciente e médico conversam (a IA fica em pausa).', pausado: 'Atendimento pausado pelo paciente. Prazo para voltar: até ' + c.ate + '.', inativo: 'Encerrado por inatividade (3 horas sem retorno).', finalizado: 'Finalizado. Documentos enviados ao paciente.' }[c.status];
   const ativo = c && c.status === 'atendimento'; const pausado = c && c.status === 'pausado';
-  return `<h2>Como testar</h2><ol><li>No <b>paciente</b>: Comece aqui (cadastro) ou Entrar.</li><li>Toque num atalho, como <b>Renovar receita</b>, diga para quem é a consulta e responda à triagem.</li><li>Escolha chat ou vídeo e <b>pague</b>.</li><li>No <b>médico</b>: toque em <b>Já tenho um cadastro</b> e entre. Chega o aviso de nova consulta: <b>Ver e aceitar</b>.</li><li>Conversem. O médico prescreve, <b>finaliza</b> e assina.</li><li>O paciente recebe os documentos e <b>avalia</b>.</li><li>Em <b>Mais</b>, tudo abre: pagamento, preferências (tamanho do texto e avisos), suporte, relatório e privacidade.</li></ol><div class="estado"><b>Agora:</b> ${st}</div><div class="grupo"><span class="rotg">Simular o tempo (regras de inatividade)</span><button class="pb" data-a="t-30" ${ativo ? '' : 'disabled'}>Paciente sem responder há 30 min <span>›</span></button><button class="pb" data-a="t-60" ${ativo ? '' : 'disabled'}>Sem resposta há 1 hora <span>›</span></button><button class="pb" data-a="t-180" ${ativo || pausado ? '' : 'disabled'}>Passaram 3 horas sem retorno <span>›</span></button></div><div class="grupo"><span class="rotg">Recomeçar</span><button class="pb" data-a="t-reset">Reiniciar o teste <span>›</span></button></div><div class="regras"><span>A IA nunca responde no lugar do médico: ela só reengaja o paciente depois de 30 min de silêncio.</span><span>Prazo para concluir o atendimento: 3 horas desde que o médico assumiu, sempre com o mesmo médico.</span><span>Cadastro e primeiros passos do médico estão no Figma; aqui ele já começa liberado.</span></div>`;
+  return `<h2>Como testar</h2><ol><li>No <b>paciente</b>: Comece aqui (cadastro) ou Entrar.</li><li>Toque num atalho, como <b>Renovar receita</b>, diga para quem é a consulta e responda à triagem.</li><li>Escolha chat ou vídeo e <b>pague</b>.</li><li>No <b>médico</b>: toque em <b>Já tenho um cadastro</b> e entre. Chega o aviso de nova consulta: <b>Ver e aceitar</b>.</li><li>Conversem. O médico prescreve, <b>finaliza</b> e assina.</li><li>O paciente recebe os documentos e <b>avalia</b>.</li><li>Em <b>Mais</b>, tudo abre: pagamento, preferências (tamanho do texto e avisos), suporte, relatório e privacidade.</li><li>No <b>médico</b>, a aba <b>Mais</b> (nova): Meus dados, <b>Clínica digital</b> (consulta com dia e hora marcada, valor, dias e horários, link e QR code), CRM, senha, Financeiro, Área de atuação e Ajuda.</li></ol><div class="estado"><b>Agora:</b> ${st}</div><div class="grupo"><span class="rotg">Simular o tempo (regras de inatividade)</span><button class="pb" data-a="t-30" ${ativo ? '' : 'disabled'}>Paciente sem responder há 30 min <span>›</span></button><button class="pb" data-a="t-60" ${ativo ? '' : 'disabled'}>Sem resposta há 1 hora <span>›</span></button><button class="pb" data-a="t-180" ${ativo || pausado ? '' : 'disabled'}>Passaram 3 horas sem retorno <span>›</span></button></div><div class="grupo"><span class="rotg">Recomeçar</span><button class="pb" data-a="t-reset">Reiniciar o teste <span>›</span></button></div><div class="regras"><span>A IA nunca responde no lugar do médico: ela só reengaja o paciente depois de 30 min de silêncio.</span><span>Prazo para concluir o atendimento: 3 horas desde que o médico assumiu, sempre com o mesmo médico.</span><span>Cadastro e primeiros passos do médico estão no Figma; aqui ele já começa liberado.</span><span>Médico › Mais: o guia não trouxe Dados pessoais, os passos de configurar a Clínica digital, Preferências, Relatório e Política e termos. Essas telas são proposta para aprovar.</span></div>`;
 }
 
 // ---------- render e eventos ----------
@@ -925,6 +1081,59 @@ async function acao(a, v, el) {
     case 'm-esqueci': toast('m', 'Igual ao paciente: CPF ou e-mail, código de 4 números e senha nova.'); return;
     case 'm-entrar': m.tela = 'fila'; m.aba = 'fila'; if (S.c && S.c.status === 'fila' && m.disp) m.notif = true; break;
     case 'm-agenda': m.tela = 'agenda'; break;
+    case 'm-agenda-voltar': m.tela = 'fila'; break;
+    // ----- aba Mais (12/11/2026) -----
+    case 'm-sub': m.sub = v || null; m.mfaq = null; if (v === 'clinica') { m.cli.passo = null; m.cli.edit = false; } if (v === 'area') m.aBusca = ''; if (v === 'dados') m.dadosAba = 'loc'; if (v === 'senha') { m.sen = { 'ms-a': 'senhateste', 'ms-n1': '', 'ms-n2': '' }; m.olhos = {}; } break;
+    case 'm-ir-fin': m.aba = 'mais'; m.sub = 'fin'; break;
+    case 'm-foto': toast('m', 'Trocar a foto: escolha uma imagem da galeria ou tire uma foto.'); return;
+    case 'm-sino': m.notifs = 0; m.tela = 'agenda'; m.dia = 21; toast('m', 'Nova consulta marcada: Carla Menezes, terça, 21, às 10:00.'); break;
+    case 'm-sair': m.tela = 'boasvindas'; m.aba = 'fila'; m.sub = null; break;
+    case 'm-olho': m.olhos[v] = !m.olhos[v]; break;
+    case 'm-dados-aba': m.dadosAba = v; break;
+    case 'm-cep-nao-sei': toast('m', 'Abre a busca de CEP dos Correios pelo nome da rua.'); return;
+    case 'm-dados-ok': {
+      const d = m.dados;
+      if (m.dadosAba === 'loc') { if (d.cep.replace(/\D/g, '').length !== 8 || !d.end.trim() || !d.num.trim()) { toast('m', 'Preencha o CEP, o endereço e o número.'); return; } m.sub = null; toast('m', 'Endereço salvo.'); }
+      else { if (!d.nome.trim() || !/@/.test(d.mail)) { toast('m', 'Confira o nome e o e-mail.'); return; } m.sub = null; toast('m', 'Dados salvos.'); }
+      break;
+    }
+    case 'm-crm-add': m.crms.push({ n: '', uf: '', p: false, fixo: false }); break;
+    case 'm-crm-principal': { const i = +v; if (m.crms[i].p) { toast('m', 'Um CRM precisa ser o principal. Ligue a chave em outro para trocar.'); return; } m.crms.forEach((c, k) => c.p = k === i); break; }
+    case 'm-crm-remover': { const i = +v; if (m.crms.length === 1) { toast('m', 'Você precisa de pelo menos um CRM.'); return; } if (m.crms[i].p) { toast('m', 'Marque outro CRM como principal antes de remover este.'); return; } m.crms.splice(i, 1); break; }
+    case 'm-crm-salvar': { const novo = m.crms.filter(c => !c.fixo); if (novo.some(c => !/^\d{4,7}$/.test(c.n) || !c.uf)) { toast('m', 'Preencha o número e a UF do novo CRM.'); return; } m.crms.forEach(c => c.fixo = true); MEDICO.crm = crmPrincipal(); m.sub = null; toast('m', 'CRM salvo. O principal aparece no seu perfil e nas receitas.'); break; }
+    case 'm-senha-ok': m.sub = null; toast('m', 'Senha alterada. Use a nova no próximo acesso.'); break;
+    case 'm-fin-ok': { const f = m.fin; if (!/^\d{4}$/.test(f.ag) || !f.cc || !f.ccdv) { toast('m', 'Preencha a agência (4 números), a conta e o dígito da conta.'); return; } m.sub = null; toast('m', 'Conta bancária salva. Os resgates de Ganhos caem nesta conta.'); break; }
+    case 'm-area': { const i = m.areas.indexOf(v); if (i >= 0) { if (m.areas.length === 1) { toast('m', 'Escolha pelo menos uma área. É ela que define quem chega na sua fila.'); return; } m.areas.splice(i, 1); } else m.areas.push(v); break; }
+    case 'm-pref': m.mprefs[v] = !m.mprefs[v]; break;
+    case 'm-whats': toast('m', 'Abre o WhatsApp do suporte Chat Doutor.'); return;
+    case 'm-faq': m.mfaq = m.mfaq === v ? null : v; break;
+    case 'm-rel-per': m.relPer = v; break;
+    case 'm-rel-pdf': toast('m', 'Relatório em PDF salvo no celular.'); return;
+    case 'm-termos-pdf': toast('m', 'Termos em PDF salvos no celular.'); return;
+    // Clínica digital
+    case 'm-cli': {
+      const c = m.cli;
+      if (v === 'comecar') { c.passo = 'valor'; c.edit = false; }
+      else if (v === 'voltar') { c.passo = c.edit ? null : ({ valor: null, horarios: 'valor', compartilhar: 'horarios' })[c.passo] ?? null; if (!c.passo) c.edit = false; }
+      else if (v === 'valor-ok') { const n = parseFloat(c.valor.replace(/\./g, '').replace(',', '.')); if (!(n > 0)) { toast('m', 'Informe o valor da consulta.'); return; } if (!c.mods.chat && !c.mods.video) { toast('m', 'Escolha chat, videochamada ou os dois.'); return; } if (c.edit) { c.passo = null; c.edit = false; toast('m', 'Valor atualizado.'); } else c.passo = 'horarios'; }
+      else if (v === 'hor-ok') { if (!DIAS7.some(d => c.dias[d])) { toast('m', 'Escolha pelo menos um dia.'); return; } const hh = x => /^([01]\d|2[0-3]):[0-5]\d$/.test(x); if (!c.faixas.every(([a, b]) => hh(a) && hh(b) && a < b)) { toast('m', 'Confira os horários: o fim precisa ser depois do começo.'); return; } if (c.edit) { c.passo = null; c.edit = false; toast('m', 'Horários atualizados. A agenda já mostra os novos horários.'); } else c.passo = 'compartilhar'; }
+      else if (v === 'ativar') { c.ativa = true; c.passo = null; toast('m', 'Clínica digital ativa. Compartilhe o link com os seus pacientes.'); }
+      else if (v === 'pronto') { c.passo = null; c.edit = false; }
+      else if (v === 'editar-valor') { c.passo = 'valor'; c.edit = true; }
+      else if (v === 'editar-hor') { c.passo = 'horarios'; c.edit = true; }
+      else if (v === 'compart') { c.passo = 'compartilhar'; c.edit = true; }
+      break;
+    }
+    case 'm-cli-mod': m.cli.mods[v] = !m.cli.mods[v]; break;
+    case 'm-cli-dia': m.cli.dias[v] = m.cli.dias[v] ? 0 : 1; break;
+    case 'm-cli-dur': m.cli.dur = +v; break;
+    case 'm-cli-faixa-add': m.cli.faixas.push(['', '']); break;
+    case 'm-cli-faixa-del': m.cli.faixas.splice(+v, 1); break;
+    case 'm-cli-pausa': m.cli.pausada = !m.cli.pausada; toast('m', m.cli.pausada ? 'Agendamentos pausados. Quem já marcou continua na agenda.' : 'Agendamentos abertos de novo.'); break;
+    case 'm-cli-agenda-hor': m.tela = 'fila'; m.aba = 'mais'; m.sub = 'clinica'; if (m.cli.ativa) { m.cli.passo = 'horarios'; m.cli.edit = true; } else { m.cli.passo = null; m.cli.edit = false; } break;
+    case 'm-copiar': toast('m', v + ' copiado.'); return;
+    case 'm-compart-link': toast('m', 'Abre as opções do celular para enviar o link: WhatsApp, SMS ou e-mail.'); return;
+    case 'm-importar': toast('m', 'Escolha uma planilha com nome e celular dos pacientes. Cada um recebe o link para marcar.'); return;
     case 'm-dia': m.dia = +v; break;
     case 'm-notif-fechar': m.notif = false; break;
     case 'm-notif-ver': m.notif = false; m.abrir = 'antonio'; m.tela = 'triagem'; m.aba = 'fila'; break;
@@ -1003,7 +1212,7 @@ async function acao(a, v, el) {
     case 'p-tag': p.tags = p.tags.includes(v) ? p.tags.filter(t => t !== v) : [...p.tags, v]; break;
     case 'p-enviar-av': if (m.pacientes[0]) m.pacientes[0].nota = p.estrelas; p.tela = 'home'; p.aba = 'inicio'; p.chat = []; p.atalhos = true; p.fluxo = null; p.livre = 0; toast('p', 'Avaliação enviada. Obrigado.'); toast('m', 'O ' + pnome() + ' avaliou o atendimento: ' + p.estrelas + ' de 5.'); break;
     // médico
-    case 'm-aba': m.aba = v; if (m.tela === 'agenda') m.tela = 'fila'; if (v === 'fila') m.tela = 'fila'; if (v === 'atendimento' && S.c && ['atendimento', 'pausado', 'inativo'].includes(S.c.status)) m.tela = 'atendimento'; if (v === 'atendimento' && S.c && S.c.status === 'finalizado') m.tela = 'finalizado'; break;
+    case 'm-aba': m.aba = v; if (m.tela === 'agenda') m.tela = 'fila'; if (m.tela === 'triagem' && v !== 'fila') m.tela = 'fila'; if (v === 'mais') m.sub = null; if (v === 'fila') m.tela = 'fila'; if (v === 'atendimento' && S.c && ['atendimento', 'pausado', 'inativo'].includes(S.c.status)) m.tela = 'atendimento'; if (v === 'atendimento' && S.c && S.c.status === 'finalizado') m.tela = 'finalizado'; break;
     case 'm-disp': m.disp = !m.disp; if (m.disp && S.c && S.c.status === 'fila') m.notif = true; break;
     case 'm-abrir': if (v === 'antonio' && !(S.c && S.c.status === 'fila')) return; m.abrir = v; m.tela = 'triagem'; break;
     case 'm-devolver': m.tela = 'fila'; m.abrir = null; break;
@@ -1019,7 +1228,7 @@ async function acao(a, v, el) {
     case 't-30': S.c.msgs.push({ de: 'sis', txt: 'Paciente sem responder há 30 minutos' }, { de: 'ia', txt: 'Oi, ' + pnome() + '. Você está sem responder há 30 minutos. O ' + MEDICO.nome + ' continua aqui, aguardando você. Quer retomar o atendimento?' }); if (ehVideo()) { S.p.tela = 'consulta'; } break;
     case 't-60': S.c.msgs.push({ de: 'sis', txt: 'Sem resposta há 1 hora' }, { de: 'ia', txt: pnome() + ', o ' + MEDICO.nome + ' continua disponível. Você quer seguir com o atendimento agora ou prefere pausar e voltar mais tarde?' }); S.c.opsPaciente = true; S.p.tela = 'consulta'; break;
     case 't-180': S.c.status = 'inativo'; S.c.msgs.push({ de: 'sis', txt: 'Atendimento encerrado por inatividade: 3 horas sem retorno' }); S.p.tela = 'inativo'; clearInterval(S.t); break;
-    case 't-reset': clearInterval(S.t); S = novo(); break;
+    case 't-reset': clearInterval(S.t); S = novo(); MEDICO.crm = 'CRM-RS 23322'; break;
   }
   render(); rolar();
 }
@@ -1048,6 +1257,22 @@ document.addEventListener('input', e => {
   if (t.id === 'cc-val') { const d = t.value.replace(/\D/g, '').slice(0, 4); t.value = d.length > 2 ? d.slice(0, 2) + '/' + d.slice(2) : d; }
   if (t.id === 'cc-cvv') t.value = t.value.replace(/\D/g, '').slice(0, 4);
   if (t.id === 'sup-busca') { S.p.busca = t.value; S.p.faq = null; render(); }
+  // médico · aba Mais
+  if (t.dataset.mk) {
+    if (t.id === 'mk-dados-cep') { const d = t.value.replace(/\D/g, '').slice(0, 8); t.value = d.length > 5 ? d.slice(0, 5) + '-' + d.slice(5) : d; const dd = S.m.dados, ok = d.length === 8; dd.cep = t.value; if (ok !== !!dd.cidade) { [dd.cidade, dd.uf] = ok ? CEPUF[d[0]] : ['', '']; render(); } return; }
+    if (/^(fin\.(ag|cc)|crms\.\d+\.n)$/.test(t.dataset.mk)) t.value = t.value.replace(/\D/g, '');
+    if (/^fin\.(agdv|ccdv)$/.test(t.dataset.mk)) t.value = t.value.replace(/[^0-9xX]/g, '').toUpperCase();
+    setMk(t.dataset.mk, t.value);
+  }
+  if (t.dataset.mf) { const [i, j] = t.dataset.mf.split('.'); const d = t.value.replace(/\D/g, '').slice(0, 4); t.value = d.length > 2 ? d.slice(0, 2) + ':' + d.slice(2) : d; S.m.cli.faixas[+i][+j] = t.value; }
+  if (t.id === 'mc-valor') { const d = t.value.replace(/\D/g, '').replace(/^0+/, '').slice(0, 6); t.value = S.m.cli.valor = ((+d || 0) / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  if (t.id === 'ma-busca') { S.m.aBusca = t.value; render(); }
+  if (['ms-a', 'ms-n1', 'ms-n2'].includes(t.id)) {
+    const s = S.m.sen; s[t.id] = t.value; const a = s['ms-n1'], b = s['ms-n2'];
+    for (const [k, v] of Object.entries(regrasM(a))) { const el = document.getElementById(k); el.classList.toggle('ok', v); el.querySelector('svg').innerHTML = v ? IP.ok : IP.erro; }
+    document.getElementById('ms-aj').hidden = !b || a === b;
+    document.getElementById('bt-msen').disabled = !senhaPode();
+  }
   if (t.id === 'c-cep') { const d = t.value.replace(/\D/g, ''); S.p.cep = t.value; if (d.length === 8 && !S.p.cepOk) { S.p.cepOk = true; render(); const c = document.getElementById('c-num'); if (c) c.focus(); } }
 });
 render();
